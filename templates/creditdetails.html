@@ -1,0 +1,30 @@
+{% extends '_layout.html' %}
+<link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap" rel="stylesheet">
+{% block content %}
+
+
+
+{% if msg %}
+<div class="alert {% if status %} alert-success {% else %} alert-danger {% endif %} alert-dismissible fade show mb-0" role="alert">
+    <strong>{{msg}}</strong>  
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
+<div class="container my-3">
+    <h1 class="text-center">User List</h1>
+    <div class="container my-3">
+        <ol>
+            {% for user in users %}
+            <li><a href="{{url_for('userdetails', uid=user['UserId'])}}">{{user['Name']}}</a> - {{user['CreditPoint']}}</li>
+            {% endfor %}
+        
+            
+        
+        </ol>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends '_layout.html' %}
+<link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap" rel="stylesheet">
+{% block content %}
+
+{% for i in user_list1 %}
+
+<div class="card m-3">
+    <div class="card-body">
+        <h2>{{ i['Name'] }}</h2>
+        <hr>
+        <h3 class="my-3">Details:</h3>
+        <p>Email: {{ i['Email'] }}</p>
+        <p>Phone: {{ i['Phone'] }}</p>
+        <p>PAN: {{ i['PAN'] }}</p> 
+        <h5>Current Credits: {{ i['Curent CreditPoint'] }}</h5>
+        <div class="container text-center">
+            <button class="btn btn-primary my-3" type="button" data-toggle="collapse" data-target="#details"
+                aria-expanded="false" aria-controls="collapseExample" title="Transfer credits now!">
+                Transfer Credit
+            </button>
+            {% endfor %}
+
+
+            <div class="collapse my-2 userform" id="details">
+                <div class="card card-body">
+
+                    <form action="{{url_for('creditdetails', uid=uid)}}" method="POST">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="vBzMMrCjxwuBzn4pgfoodzpSaNdzMSVg6U37QHw6ivsazaSfamKhkTRlGi8AUYJO">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label text-right">Recipient User<span
+                                    style="color: red;">*</span>:</label>
+                            <select required class="form-control col-sm-8" ttype="text" id="username" name="username">
+
+                                {% for user in users %}
+                                
+                                <option {{ "selected" if selectedCourse == user.Name else "" }}>{{user.Name}}</option>
+                            
+                                {% endfor %}
+                                
+                            </select>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label text-right">Credit(s)<span
+                                    style="color: red;">*</span>:</label>
+                            <input class="col-sm-8" type="number" id="credit" name="credit" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

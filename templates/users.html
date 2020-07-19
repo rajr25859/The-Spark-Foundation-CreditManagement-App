@@ -1,0 +1,33 @@
+{% extends '_layout.html' %}
+<link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap" rel="stylesheet">
+{% block content %}
+
+
+<div class="container my-3">
+    <h1 class="text-center">User List</h1>
+    <div class="container my-3 mt-3 userlist">
+
+{% for i in user_list %}
+
+<table class="table table-light">
+  <thead class="thead-dark">
+      <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Credit Points</th>
+</tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><a href="{{url_for('userdetails', uid=i['UserId'])}}">{{ i['Name'] }} </a></td>
+
+    <td>{{ i['CreditPoint'] }}</td>
+</tr>
+  </tbody>
+</table>
+{% endfor %}
+
+
+{% endblock %}
+
+

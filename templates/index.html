@@ -1,0 +1,17 @@
+{% extends '_layout.html' %}
+<link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cute+Font&display=swap" rel="stylesheet">
+{% block content %}
+
+<div class="row">
+  <div class="col">
+    <div class="jumbotron">
+      <h1 class="display-4">Welcome to Credit Management!</h1>
+      <p class="lead">Transfer the credits of users from one to another in a easy way now.</p>
+      <hr class="my-4">
+      <a class="btn btn-primary btn-lg" href="{{ url_for('users') }}" role="button">User_list</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
